@@ -44,14 +44,15 @@ h1{
     margin: 20px;
     border-radius: 20px;
     transition: all 0.3s;
+    box-shadow: 5px 5px 5px;
 }
 .elem:hover{
-    border: 2px solid rgb(14, 214, 204);
-    color:  rgb(14, 214, 204);
+    border: 2px solid  rgb(66, 124, 121);
+    color:  rgb(66, 124, 121);
     background-color: white;
+    box-shadow: 10px 10px 2px;
     transform: scale(1.2);
 }
-
 
 </style>
 
@@ -85,7 +86,12 @@ const elemLoadFunction = () => {
 elemLoadFunction();
 
 mainContainer.addEventListener('click',(evemt)=>{
-    
+    const target = event.target;
+    if(target.classList.contains('elem')){
+        const atomicNum = target.getAttribute("data-atomic-number");
+        const elemName = target.getAttribute("data-element-name");
+        alert(`Atomic Number = ${atomicNum}\nElement Name = ${elemName}`);
+    }
 });
 
 </script>
