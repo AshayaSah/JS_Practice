@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #333;
+    color: white;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* height: 100vh; */
+}
+
+h1{
+    margin: 40px;
+}
+
+.mainContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.elem{
+    height: 75px;
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    margin: 20px;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+.elem:hover{
+    border: 2px solid rgb(14, 214, 204);
+    color:  rgb(14, 214, 204);
+    background-color: white;
+    transform: scale(1.2);
+}
+
+
+</style>
+
+<body>
+    <section>
+        <h1>Event Deligation - Periodic Table</h1>
+        <div class="mainContainer"></div>
+    </section>
+
+<script>
+
+let mainContainer = document.querySelector('.mainContainer');
+
+const addElemDynamically = (i) => {
+    const createDiv = document.createElement('div');
+    createDiv.classList.add('elem');   
+    createDiv.innerText=`Ele ${i}`;
+    mainContainer.append(createDiv);
+
+    createDiv.setAttribute("data-atomic-number",i);
+    createDiv.setAttribute("data-element-name",`Element ${i}`);
+
+}
+
+const elemLoadFunction = () => {
+    for(let i = 1; i <= 50; i++){
+        addElemDynamically(i);
+    }
+};
+
+elemLoadFunction();
+
+mainContainer.addEventListener('click',(evemt)=>{
+    
+});
+
+</script>
+
+</body>
+</html>
