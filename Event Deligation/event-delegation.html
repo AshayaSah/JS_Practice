@@ -68,6 +68,7 @@
       const getListDetails = (event) => {
         const listItem = event.target;
 
+        //For the rotating animation
         listItem.style.transform = 'rotateX(360deg)';
         setTimeout(()=>{
           listItem.style.transform = 'rotateX(0deg)';
