@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To DO List Revised
+    </title>
+</head>
+<body>
+    <Section id="main">
+        <div>
+            <h1>To Do List</h1>
+            <div>
+                <input class="input">
+                <button class="addButton">Add To List</button>
+            </div>
+            <div class="outerListDiv">
+
+            </div>
+        </div>
+    </Section>
+
+<script>
+
+let input = document.querySelector(".input");
+let addButton = document.querySelector(".addButton");
+let outerListDiv = document.querySelector(".outerListDiv");
+
+const getListFromLocal = () => {
+    return JSON.parse(localStorage.getItem("Items"));
+}
+
+const addListToLocal = (localList) => {
+    return localStorage.setItem("Items",JSON.stringify(localList));
+};
+
+
+let localList = getListFromLocal() || [];
+
+const addListToDom = (content) => {
+    let innerListDiv = document.createElement("div");
+    innerListDiv.classList.add("innerListDiv");
+    innerListDiv.innerHTML = `<li>${content}</li><button class="deleteBtn">Delete</button`;
+
+    return innerListDiv;
+};
+
+const addToListLocal = () => {
+    let inputValue = input.value.trim();
+    
+    if(inputValue != "" && !localList.includes(inputValue)){
+        localList.push(inputValue);
+        
+        localList = [...new Set(localList)];
+        
+        addListToLocal(localList);
+        console.log(localList);
+
+        let createDiv = addListToDom(inputValue);
+        outerListDiv.append(createDiv);
+    }
+
+    input.value = "";
+};
+
+const removeList = (event) => {
+    let targetEle = event.target;
+    let targetContent = targetEle.previousElementSibling.innerText;
+    let targetParent = targetEle.parentElement;
+
+    localList = localList.filter((curr) => {
+        return targetContent.toLowerCase() != curr.toLowerCase(); 
+    });
+    
+    addListToLocal(localList);
+    console.log(localList);
+
+    targetParent.remove();
+
+};
+
+const showListFromLocal = (() =>{
+    localList.forEach((curr) => {
+        let createDiv = addListToDom(curr);
+        outerListDiv.append(createDiv);
+    });
+})();
+
+outerListDiv.addEventListener('click',(event) => {
+    if(event.target.classList.contains("deleteBtn")){
+        removeList(event);
+    }
+});
+
+addButton.addEventListener('click',() => {
+    addToListLocal();
+});
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

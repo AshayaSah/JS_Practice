@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<body>
+    <input type="text" id="myInput" name="usernmae" placeholder="Type Something..."/>
+    <div class="output">
+        <p class="keyPressed">Key Pressed:</p>
+        <p class="keyCode">Key Code:</p>
+        <p class="charCode">Char Code:</p>
+        <p class="eventType">Event Type:</p>
+    </div>
+<script>
+
+    
+    // const handleKeyPress = (event) => {
+    //     console.log(event);
+    //     console.log("Key Pressed:" ,event.key);
+    //     console.log("Key Code:" ,event.code);
+    //     console.log("Char Code:" ,event.key.charCodeAt(0));
+    //     console.log("Event Type:" ,event.type);
+
+    //     keyPressed.textContent = `Key Pressed: ${event.key}`;
+    //     keyCode.textContent = `Key Code: ${event.code}`;
+    //     charCode.textContent = `Char Code: ${event.key.charCodeAt(0)}`;
+    //     eventType.textContent = `Event Type: ${event.type}`;
+
+    // };
+
+    // var myInput = document.getElementById("myInput");
+    // var keyPressed = document.querySelector(".keyPressed");
+    // var keyCode = document.querySelector(".keyCode");
+    // var charCode = document.querySelector(".charCode");
+    // var eventType = document.querySelector(".eventType");
+
+    // myInput.addEventListener('keydown', handleKeyPress);
+
+
+
+    const handleInput = (event) => {
+        console.log(event);
+        console.log("Input Value:" ,event.target.value);
+        console.log("Input Name:" ,event.target.name);
+        console.log("Input Type:" ,event.inputType);
+        console.log("Event Type:" ,event.type);
+
+        keyPressed.textContent = `Input Value: ${event.target.value}`;
+        keyCode.textContent = `Input Name: ${event.target.name}`;
+        charCode.textContent = `Input Type: ${event.inputType}`;
+        eventType.textContent = `Event Type: ${event.type}`;
+
+    };
+
+    var myInput = document.getElementById("myInput");
+    var keyPressed = document.querySelector(".keyPressed");
+    var keyCode = document.querySelector(".keyCode");
+    var charCode = document.querySelector(".charCode");
+    var eventType = document.querySelector(".eventType");
+
+    myInput.addEventListener('input', handleInput);
+</script>
+</body>
+</html>

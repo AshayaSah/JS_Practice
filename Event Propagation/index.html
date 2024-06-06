@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.7;
+}
+
+.outer{
+    height: 600px;
+    width: 600px;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.middle{
+    height: 400px;
+    width: 400px;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inner{
+    height: 200px;
+    width: 200px;
+    background-color: yellowgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+</style>
+
+<body>
+    <section>
+        <div class="outer">
+        Outer
+            <div class="middle">
+            Middle
+                <div class="inner">
+                    Inner
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script>
+let outer = document.querySelector(".outer");
+let middle = document.querySelector(".middle");
+let inner = document.querySelector(".inner");
+
+
+// //Bubbling Phase
+// outer.addEventListener('click', (event) => {
+//     console.table([
+//         {
+//             description: "I am the outer one.",
+//             target: event.target,
+//             currentTarget: event.currentTarget,
+//         }
+//     ]);
+// });
+// middle.addEventListener('click', (event) => {
+//     console.table([
+//         {
+//             description: "I am the middle one.",
+//             target: event.target,
+//             currentTarget: event.currentTarget,
+//         }
+//     ]);
+// });
+// inner.addEventListener('click', (event) => {
+//     console.table([
+//         {
+//             description: "I am the inner one.",
+//             target: event.target,
+//             currentTarget: event.currentTarget,
+//         }
+//     ]);
+//     // event.stopPropagation();
+// });
+
+//Capturing Phase
+outer.addEventListener('click', (event) => {
+    console.table([
+        {
+            description: "I am the outer one.",
+            target: event.target,
+            currentTarget: event.currentTarget,
+        }
+    ]);
+},true);
+middle.addEventListener('click', (event) => {
+    console.table([
+        {
+            description: "I am the middle one.",
+            target: event.target,
+            currentTarget: event.currentTarget,
+        }
+    ]);
+},true);
+inner.addEventListener('click', (event) => {
+    console.table([
+        {
+            description: "I am the inner one.",
+            target: event.target,
+            currentTarget: event.currentTarget,
+        }
+    ]);
+    // event.stopPropagation();
+},true);
+
+
+</script>
+
+
+
+</body>
+
+
+</html>
